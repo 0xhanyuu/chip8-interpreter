@@ -1,0 +1,28 @@
+4096 memory locations (bytes),
+interpreter itself uses first 512 bytes,
+most programs begin at 512 for this reason
+uppermost 512 bytes reserved for display refresh,
+96 bytes below reserved for call stack, internal use,
+and other variables
+
+registers V0 - VF
+VF register doubles as a flag for instructions
+in addition, VF is the carry flag
+in subtraction, VF is the 'no borrow flag'
+in drawing, VF is set upon pixel collision
+
+address register, named I, is 12 bits wide,
+used with several opcodes that involve memory operations
+
+
+
+variables / symbols:
+
+NNN: address
+NN: 8 bit constant
+N: 4 bit constant
+X and Y: 4-bit register identifier
+PC: program counter
+I: 12bit register for memory, similar to void *
+VN: one of 16 available variables. N may be 0 to F
+
