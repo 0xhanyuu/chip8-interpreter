@@ -1,14 +1,14 @@
+SRCDIR = src/
+OBJDIR = obj/
+INCDIR = include/
+
 CC = gcc
 CFLAGS = -Wall -g -I$(INCDIR)
-
-SRCDIR = src
-OBJDIR = obj
-INCDIR = include
 
 TARGET = chip8
 
 SRCS = $(wildcard $(SRCDIR)/*.c)
-OBJS = $(SRCS:$(SRCDIR)/%.c, $(OBJDIR)/%.o)
+OBJS = $(SRCS:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
 
 all: $(TARGET)
 
