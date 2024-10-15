@@ -1,0 +1,23 @@
+main/interpreter:
+-combine every component
+-handle inline argument
+-initialise all constants
+
+input:
+-SDL2
+
+sound:
+-SDL2
+
+timers:
+-inbuilt stdclib time stuff
+
+opcodes:
+-instructions/opcodes (function ptr?)
+
+sprites:
+-array of uint8_t for basic sprites
+
+display:
+-SDL2
+-OpenGL
