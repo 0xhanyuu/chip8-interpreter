@@ -21,8 +21,7 @@ void CLS()
 
 void RET(uint8_t SP, uint8_t PC)
 {
-	// PC = address at top of stack
- 
+	PC = STACK[SP]; 
 	SP = SP - 1;
 }
 
@@ -39,11 +38,51 @@ void CALL(uint16_t I, uint8_t SP, uint8_t PC)
 	// PC is then set to address
 }
 
-void SE(uint16_t register_index,
+void SE(uint8_t register_index, // 3xkk
 		uint16_t STACK[16],
 		uint8_t byte,
 		uint8_t PC)
 {
 	if ( STACK[register_index] == byte )
 		PC = PC + 2;
+}
+
+void SNE(uint8_t register_index,
+		 uint16_t STACK[16],
+		 uint8_t byte,
+		 uint8_t PC)
+{
+	if ( STACK[register_index] != byte )
+		PC = PC + 2;
+}
+
+void SE_(uint8_t register_x, // 5xy0
+		 uint8_t register_y,
+		 uint16_t STACK[16],
+		 uint8_t PC)
+{
+	if ( STACK[register_x] == STACK[register_y] )
+		PC = PC + 2;
+}
+
+void LD(uint8_t byte, // 6xkk
+		uint8_t register_index,
+		uint16_t STACK[16])
+{
+	STACK[register_index] = byte;
+}
+
+void ADD(uint8_t byte, // 7xkk
+		uint8_t register_index,
+		uint16_t STACK[16])
+{
+	STACK[register_index] = STACK[register_index] + byte;
+}
+
+
+void LD_(uint8_t register_x, // 8xy0
+		 uint8_t register_y,
+		 uint16_t STACK[16])
+{
+	STACK[register_x] = STACK[register_y];
 }
