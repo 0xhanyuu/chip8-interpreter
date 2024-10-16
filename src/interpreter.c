@@ -47,19 +47,26 @@ int main(int argc, char **argv)
 	char filename[128];
 	signed int file_handling_code = file_handling(argc, argv, filename);	
 	if ( file_handling_code == EXIT_FAILURE )
-		exit(EXIT_FAILURE);
+		return EXIT_FAILURE;
 
 	// open in binary mode
 	FILE * chip8_file = fopen(filename, "rb");
+
 	// get no. of characters of file
 	fseek(chip8_file, SEEK_CUR, SEEK_END);	
 	unsigned int FILE_MEMORY = ftell(chip8_file); 
 	rewind(chip8_file);
+
 	// check if valid
 	if ( FILE_MEMORY > MEMORY_SIZE )
 	{
 		printf("%s\n", "File size too large! Exiting...");
 		exit(EXIT_FAILURE);
+	}
+	else
+	{
+		printf("%s\n", "File size: OK");
+		printf("%s\n", "Starting program...");
 	}
 
 	return 0;
