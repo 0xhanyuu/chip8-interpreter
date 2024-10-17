@@ -86,3 +86,17 @@ void LD_(uint8_t register_x, // 8xy0
 {
 	STACK[register_x] = STACK[register_y];
 }
+
+void OR(uint8_t register_x, // 8xy1
+		uint8_t register_y,
+		uint16_t STACK[16])
+{
+	STACK[register_x] = STACK[register_x] | STACK[register_y];
+}
+
+void AND(uint8_t register_x,
+		 uint8_t register_y,
+		 uint16_t STACK[16])
+{
+	STACK[register_x] = STACK[register_x] & STACK[register_y];
+}
