@@ -94,9 +94,16 @@ void OR(uint8_t register_x, // 8xy1
 	STACK[register_x] = STACK[register_x] | STACK[register_y];
 }
 
-void AND(uint8_t register_x,
+void AND(uint8_t register_x, // 8xy2
 		 uint8_t register_y,
 		 uint16_t STACK[16])
 {
 	STACK[register_x] = STACK[register_x] & STACK[register_y];
+}
+
+void XOR(uint8_t register_x, // 8xy3
+		 uint8_t register_y,
+		 uint16_t STACK[16])
+{
+	STACK[register_x] = STACK[register_x] ^ STACK[register_y];
 }
