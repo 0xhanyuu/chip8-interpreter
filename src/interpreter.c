@@ -2,13 +2,13 @@
 #include <string.h>
 #include <stdlib.h>
 
-//#include "../include/opcodes.h"
-//#include "../include/sprites.h"
-#include "../include/memory.h"
-//#include <display.h>
-//#include <timers.h>
-//#include <input.h>
-//#include <sound.h>
+#include "opcodes.h"
+#include "sprites.h"
+#include "memory.h"
+#include "display.h"
+#include "timers.h"
+#include "input.h"
+#include "sound.h"
 
 void print_usage_error()
 {
