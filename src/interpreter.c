@@ -5,14 +5,11 @@
 #include "opcodes.h"
 #include "sprites.h"
 #include "memory.h"
-#include "display.h"
-#include "timers.h"
-#include "input.h"
-#include "sound.h"
 
 void print_usage_error()
 {
         fprintf(stderr, "Usage: chip8 <filename>\n");
+        exit(1);
 }
 
 signed int file_handling(int argc, char **argv, char filename[])
@@ -42,8 +39,32 @@ signed int file_handling(int argc, char **argv, char filename[])
         return EXIT_SUCCESS;
 }
 
+void interpret(FILE * file)
+{
+        // instruction = fetch(file)
+        // opcode = decode(instruction)
+        // execute(opcode)
+        // go to next instruction
+}
+
+void fetch()
+{
+
+}
+
+void decode()
+{
+
+}
+
+void execute()
+{
+
+}
+
 int main(int argc, char **argv)
 {
+        // get name of input file stored in argv[1]
         char filename[128];
         signed int file_handling_code = file_handling(argc, argv, filename);    
         if ( file_handling_code == EXIT_FAILURE )
@@ -57,7 +78,7 @@ int main(int argc, char **argv)
         unsigned int FILE_MEMORY = ftell(chip8_file); 
         rewind(chip8_file);
 
-        // check if valid
+        // check if valid, then run
         if ( FILE_MEMORY > MEMORY_SIZE )
         {
                 printf("%s\n", "File size too large! Exiting...");
@@ -68,6 +89,8 @@ int main(int argc, char **argv)
                 printf("%s\n", "File size: OK");
                 printf("%s\n", "Starting program...");
         }
+
+        interpret(chip8_file);        
 
         fclose(chip8_file);
 

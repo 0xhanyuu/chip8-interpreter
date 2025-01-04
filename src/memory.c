@@ -3,6 +3,6 @@
 
 uint16_t STACK[16];
 
-uint8_t PC;
-uint8_t SP;
-uint16_t I;
+uint8_t PC; //program counter register
+uint8_t SP; //stack pointer register
+uint16_t I; //address register
