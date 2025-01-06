@@ -6,6 +6,14 @@
 #include "sprites.h"
 #include "memory.h"
 
+typedef char byte;
+
+typedef struct word
+{
+        byte opcode_a;
+        byte opcode_b;
+} word;
+
 void print_usage_error()
 {
         fprintf(stderr, "Usage: chip8 <filename>\n");
@@ -39,28 +47,36 @@ signed int file_handling(int argc, char **argv, char filename[])
         return EXIT_SUCCESS;
 }
 
-void interpret(FILE * file)
+word fetch(FILE * file)
 {
-        // instruction = fetch(file)
-        // opcode = decode(instruction)
-        // execute(opcode)
-        // go to next instruction
+        word instruction;
+        instruction.opcode_a = fgetc(file);
+        instruction.opcode_b = fgetc(file);
+        return instruction;
 }
 
-void fetch()
+void decode(word instruction)
 {
-
-}
-
-void decode()
-{
-
+        
 }
 
 void execute()
 {
 
 }
+
+void interpret(FILE * file)
+{
+        while ( !(file == EOF) )
+        {
+                word current_instruction;
+                current_instruction = fetch(file);
+                decode(current_instruction);
+                // execute(opcode)
+        }
+}
+
+
 
 int main(int argc, char **argv)
 {
@@ -91,7 +107,6 @@ int main(int argc, char **argv)
         }
 
         interpret(chip8_file);        
-
         fclose(chip8_file);
 
         return 0;
