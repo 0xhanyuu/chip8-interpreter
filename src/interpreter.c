@@ -6,13 +6,7 @@
 #include "sprites.h"
 #include "memory.h"
 
-typedef char byte;
-
-typedef struct word
-{
-        byte opcode_a;
-        byte opcode_b;
-} word;
+typedef short dword;
 
 void print_usage_error()
 {
@@ -47,17 +41,21 @@ signed int file_handling(int argc, char **argv, char filename[])
         return EXIT_SUCCESS;
 }
 
-word fetch(FILE * file)
+dword fetch(FILE * file)
 {
-        word instruction;
-        instruction.opcode_a = fgetc(file);
-        instruction.opcode_b = fgetc(file);
+        // take two bytes at once and return 
+        dword instruction;
+        instruction = fgetc(file);
+        instruction += (2 << fgetc(file));
         return instruction;
 }
 
-void decode(word instruction)
+void decode(dword instruction)
 {
-        
+       switch(instruction & 0xF000) // ?
+       {
+
+       }
 }
 
 void execute()
@@ -67,9 +65,9 @@ void execute()
 
 void interpret(FILE * file)
 {
-        while ( !(file == EOF) )
+        while ( !(fgetc(file) == EOF) ) // placeholder line - will need to edit
         {
-                word current_instruction;
+                dword current_instruction;
                 current_instruction = fetch(file);
                 decode(current_instruction);
                 // execute(opcode)
