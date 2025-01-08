@@ -52,10 +52,23 @@ dword fetch(FILE * file)
 
 void decode(dword instruction)
 {
-       switch(instruction & 0xF000) // ?
-       {
+        switch(instruction & 0xF000) 
+        {
+                case 0: // sys
+                break;
 
-       }
+                case 1: // jumps
+                break;
+
+                case 2: // calls
+                break;
+
+                case 6: // load
+                break;
+
+                case 8: // arithmetic / bitwise
+                break;
+        }
 }
 
 void execute()
